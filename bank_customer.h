@@ -2,6 +2,7 @@
 #define BANK_CUSTOMER_H
 
 #include <string>
+#include <iostream> // supaya bisa pakai cout
 
 using namespace std;
 
@@ -12,21 +13,31 @@ private:
     double balance;
 
 public:
-    BankCustomer(int id, const string& name, double balance) : id(id), name(name), balance(balance) {
-        this->id = id;
-        this->name = name;
-        this->balance = balance;
-    }
+    BankCustomer(int id, const string& name, double balance)
+        : id(id), name(name), balance(balance) {}
 
+    // Getter
     int getId() const;
     string getName() const;
     double getBalance() const;
 
-    void printInfo() const;
+    // Setter
     void setName(const string& name);
     void setBalance(double balance);
-    void addBalance(double amout);
-    bool withdrawBalance(double amout);
+
+    // Operasi saldo
+    void addBalance(double amount);
+    bool withdrawBalance(double amount);
+
+    // Cetak info singkat
+    void printInfo() const;
+
+    // Cetak detail lengkap
+    void display() const {
+        cout << "Customer ID: " << id
+             << ", Name: " << name
+             << ", Balance: " << balance << endl;
+    }
 };
 
 #endif // BANK_CUSTOMER_H
